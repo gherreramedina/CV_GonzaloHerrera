@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
@@ -8,6 +7,10 @@
   <title>Unity Web Player | CV_Gonzalo 2026</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     html, body {
       width: 100%;
       height: 100%;
@@ -30,13 +33,19 @@
       border: 0;
       max-width: none;
       max-height: none;
+      overflow: hidden;
       background: #ffffff;
     }
   </style>
 </head>
 
 <body>
-  <canvas id="unity-canvas" width="1920" height="1080" tabindex="-1"></canvas>
+  <canvas
+    id="unity-canvas"
+    width="1920"
+    height="1080"
+    tabindex="-1">
+  </canvas>
 
   <script src="Build/builds.loader.js"></script>
   <script>
@@ -51,8 +60,8 @@
         availableHeight / 1080
       );
 
-      canvas.style.setProperty("width", (1920 * scale) + "px", "important");
-      canvas.style.setProperty("height", (1080 * scale) + "px", "important");
+      canvas.style.width = (1920 * scale) + "px";
+      canvas.style.height = (1080 * scale) + "px";
     }
 
     window.addEventListener("resize", resizeCanvas);
@@ -70,6 +79,7 @@
     }).then((unityInstance) => {
       resizeCanvas();
     }).catch((message) => {
+      console.error(message);
       alert(message);
     });
   </script>
